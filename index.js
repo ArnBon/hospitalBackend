@@ -10,18 +10,16 @@ const app = express();
 //cors
 app.use( cors() );
 
+//Lectura y parseo del body
+app.use( express.json() );
+
 //bd
 dbConnection();
 
 // Rutas
-app.get( '/', (req, res) => {
+app.use('/api/usuarios', require('./routes/usuariosRoute') );
+app.use('/api/login', require('./routes/authRoute') );
 
-    res.json({
-        ok: true,
-        msg: 'Hola Mundo'
-    });
-
-});
 
 
 
